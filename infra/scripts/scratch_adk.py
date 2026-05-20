@@ -1,6 +1,13 @@
 import os
-from google.adk.agents import Agent
+import sys
 import asyncio
+
+# Add the backend_api directory to the python path so the 'app' module can be found
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../apps/backend_api')))
+
+# pyrefly: ignore [missing-import]
+from app.core.config import settings
+from google.adk.agents import Agent
 
 async def main():
     agent = Agent(
@@ -11,5 +18,5 @@ async def main():
     print("Agent methods:", [m for m in dir(agent) if not m.startswith("_")])
 
 if __name__ == "__main__":
-    os.environ["GEMINI_API_KEY"] = "AQ.Ab8RN6K3nJv79efPIBDewgWkuK-WhGT036rOq8Yb0JBuo-K8qA"
+    os.environ["GEMINI_API_KEY"] = settings.GEMINI_API_KEY
     asyncio.run(main())

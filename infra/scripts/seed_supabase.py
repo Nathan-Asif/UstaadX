@@ -1,9 +1,16 @@
 import os
+import sys
+
+# Add the backend_api directory to the python path so the 'app' module can be found
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../apps/backend_api')))
+
 from supabase import create_client, Client
+# pyrefly: ignore [missing-import]
+from app.core.config import settings
 
 # Hardcoded for the seeding script to avoid import errors from other app modules
-SUPABASE_URL = "https://lxutyoztfpmoxnaunrkm.supabase.co"
-SUPABASE_KEY = "sb_publishable_lTtF8t2RYbif-GP57wqQJA_C3dRnJws"
+SUPABASE_URL = settings.SUPABASE_URL
+SUPABASE_KEY = settings.SUPABASE_SERVICE_ROLE_KEY
 
 supabase_client: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 

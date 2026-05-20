@@ -11,11 +11,14 @@ from google.adk.runners import Runner
 from google.adk.sessions.in_memory_session_service import InMemorySessionService
 from google.genai import types
 
+# pyrefly: ignore [missing-import]
+from app.core.config import settings
+# pyrefly: ignore [missing-import]
 from app.agents.ranking_agent import create_ranking_agent
 
 async def test_ranking_agent():
     # Make sure we have the API key
-    os.environ["GEMINI_API_KEY"] = "AQ.Ab8RN6K3nJv79efPIBDewgWkuK-WhGT036rOq8Yb0JBuo-K8qA"
+    os.environ["GEMINI_API_KEY"] = settings.GEMINI_API_KEY
     
     agent = create_ranking_agent()
     
