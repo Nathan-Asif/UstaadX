@@ -1,0 +1,9 @@
+=== Prompt 1 ===
+extract this skill and then using this skill make an agents and tools and make a agents in agents folder and and also make a tools folder in which you make all the tools and in the .env make a enviroment veriabled of google map api etc i will setup later you can make the crendentials empty and make sure you make a agents properly multiagents system properly calling tools and proper handsoffs and the instructions of the each agent should be proper not too long and used the 3Cs concepts in this (context, contraints,and clarity ) and make a pydantic file in which you make a secure and proper output response of the each agents @[d:\Ai_seekho\UstaadX\home-services-adk-agent.skill]
+first make a small todo task to implement them step by step 
+
+RULE:
+I want you to save the each prompts of me in the @[d:\Ai_seekho\UstaadX\prompts_logs] folder make a one agents prompts log file in which you store my prompts 
+
+=== Prompt 2 ===
+yes implement them and for install any dependencies activate the uv enviroment and install with uv pip install

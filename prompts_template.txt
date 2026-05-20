@@ -1,0 +1,7 @@
+Note: Take logs of all my given prompts in a md file, each prompt on a new line
+
+this is all the agents required in this app @contextScopeItemMention
+
+the agents now we have to build are 4 and 5, lets plan that first
+
+(we are going to build server and agents, as flutter frontend isnt ready because the design is being worked on at the moment so meanwhile we work on that first)

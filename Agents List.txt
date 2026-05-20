@@ -1,0 +1,13 @@
+1. Intent Understanding AgentPurpose: Acts as the entry point for incoming requests. It processes natural language inputs (text or transcribed voice notes in Urdu, Roman Urdu, or English) to extract key parameters: service type, user location, timing requirements, and urgency .  Example: If a user text says "Fridge thanda nahi kar raha aur mehmaan ane wale hain," this agent flags the service as "Appliance Repair", the issue as "Cooling Failure", and sets the priority to "High" .  
+
+2. Clarification AgentPurpose: Engages the user to gather missing or ambiguous technical details required to make an accurate match . It steps in only if the initial intent lacks context.  Example: Asking the customer, "Aapka AC split hai ya window?" or "Geyser gas wala hai ya electric?" so the technicians know exactly what tools to bring.  
+
+3. Provider Discovery AgentPurpose: Handles the physical scouting layer . It triggers tool calls to the Google Maps and Places APIs alongside your Supabase provider database to pull a list of nearby, active, and category-matching technicians .  
+
+4. Ranking Agent (The Ustaad-Elo Engine)Purpose: The computational core of your matching pipeline . It replaces static star ratings with a dynamic Elo mathematical matchup . It evaluates candidates using six single-line weighted metrics (Meritocratic Reliability Elo, verified feedback, proximity, shadow-agent response speed, urgency suitability, and past lifecycle completion history) to surface the most optimal "Ustaad" .  
+
+5. Negotiation Agent (The Proxy Negotiator)Purpose: Represents the autonomous bridge between the customer and the provider. It manages the "Shadow Negotiation" phase. If an Ustaad is offline or busy, it contacts their dedicated agent instance (or shifts to the WhatsApp Cloud API for Case 2) to propose the task, negotiate timing slots based on urgency, and finalize tentative assignments without requiring instant manual back-and-forth messaging from either human party .  
+
+6. Booking AgentPurpose: Executes the system-state transactions . Once the Negotiation Agent secures an agreement, this agent generates the digital booking token, simulates the receipt configuration, updates the database state to "Pending Review" for the technician, and establishes the visual scheduling timeline for the customer app UI .  
+
+7. Follow-Up AgentPurpose: Manages the post-booking lifecycle and automated telemetry . It uses Redis/Celery to fire background tasks, sending automated reminders, tracking live status transitions, coordinating ETA updates, and collecting post-service feedback to push back into the Ranking Agent to calibrate the technician's new Elo rating .

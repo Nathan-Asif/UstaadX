@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>UstaadX - Searching Map</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+Arabic:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#151d1e",
+                        "secondary-container": "#0266ff",
+                        "on-tertiary-fixed-variant": "#554500",
+                        "on-tertiary-fixed": "#231b00",
+                        "error-container": "#93000a",
+                        "surface-bright": "#333b3b",
+                        "outline": "#849495",
+                        "on-surface-variant": "#b9cacb",
+                        "surface-container-high": "#232b2c",
+                        "surface-container-highest": "#2e3637",
+                        "on-secondary": "#002b75",
+                        "on-secondary-fixed-variant": "#003fa4",
+                        "tertiary-fixed": "#ffe179",
+                        "inverse-primary": "#006970",
+                        "tertiary": "#fff5de",
+                        "on-background": "#dce4e5",
+                        "on-primary": "#00363a",
+                        "surface-container-lowest": "#080f10",
+                        "secondary-fixed": "#dae1ff",
+                        "on-primary-fixed-variant": "#004f54",
+                        "on-surface": "#dce4e5",
+                        "surface-dim": "#0d1515",
+                        "inverse-on-surface": "#2a3233",
+                        "inverse-surface": "#dce4e5",
+                        "on-error-container": "#ffdad6",
+                        "surface-tint": "#00dbe9",
+                        "outline-variant": "#3b494b",
+                        "primary-fixed-dim": "#00dbe9",
+                        "background": "#0d1515",
+                        "on-secondary-fixed": "#001849",
+                        "surface-variant": "#2e3637",
+                        "surface-container": "#192122",
+                        "tertiary-container": "#fed639",
+                        "on-secondary-container": "#f9f7ff",
+                        "on-tertiary": "#3b2f00",
+                        "surface": "#0d1515",
+                        "on-primary-fixed": "#002022",
+                        "secondary": "#b3c5ff",
+                        "on-tertiary-container": "#715d00",
+                        "on-primary-container": "#006970",
+                        "tertiary-fixed-dim": "#eac324",
+                        "secondary-fixed-dim": "#b3c5ff",
+                        "error": "#ffb4ab",
+                        "primary": "#dbfcff",
+                        "primary-fixed": "#7df4ff",
+                        "primary-container": "#00f0ff",
+                        "on-error": "#690005"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "24px",
+                        "stack-lg": "40px",
+                        "base": "8px",
+                        "container-padding": "24px",
+                        "stack-sm": "12px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "body-md-urdu": ["Noto Sans Arabic"],
+                        "headline-lg-mobile": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "title-md": ["Inter"],
+                        "body-lg-urdu": ["Noto Sans Arabic"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "body-md-urdu": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "title-md": ["20px", { "lineHeight": "28px", "fontWeight": "500" }],
+                        "body-lg-urdu": ["20px", { "lineHeight": "32px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .radar-pulse {
+            animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 0.8; }
+            100% { transform: scale(3); opacity: 0; }
+        }
+        .glowing-border {
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.1), 0 0 15px rgba(0, 240, 255, 0.3);
+        }
+        /* Hide scrollbar for slider */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background h-screen w-screen overflow-hidden font-body-md flex flex-col relative">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-background/80 dark:bg-background/80 backdrop-blur-xl border-b border-outline-variant/20 shadow-[0_0_15_rgba(0,240,255,0.1)] flex flex-col">
+<div class="flex items-center justify-between px-container-padding h-16 w-full">
+<button class="text-on-surface-variant hover:text-primary transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-surface-tint tracking-tight">UstaadX</h1>
+<div class="w-6"></div> <!-- Spacer for centering -->
+</div>
+</header>
+<!-- Main Canvas (Map Background) -->
+<main class="flex-1 relative w-full h-full">
+<!-- Map Image Layer -->
+<div class="absolute inset-0 z-0">
+<img alt="Map background" class="w-full h-full object-cover opacity-30 grayscale brightness-50 contrast-125 mix-blend-luminosity" data-alt="A highly detailed, stylized digital map interface rendered in deep Cobalt Navy and Space Obsidian dark mode aesthetics. The urban grid is geometric and precise, with subtle glowing cyan accents outlining major arterial routes. The overall mood is high-tech, nocturnal, and navigational, fitting seamlessly into a premium, high-contrast digital tracking application. No text labels." data-location="Lahore" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXgmt7m56WxJyOwcsuNy86s_AvHni6OkvLdPVWMiEKrZvOlw6mDYWJ2DsXHjGxt1ZjOoOa7JRWbJjosHy7kcwdWGqjrf9YtAxVseWUPkyRC7xLQOYt-FzqXx82UKHBjLgirsCb4jAcq-l3PNyCU900lcNkowFrkE9Ot_NIxv23OyMjP8YJEKwc2TUfFKCKXyOfRanqj93g37j-QO5WydKHrNcnR5AhrIbvtEQEpHPd8NsEIv1bP2CQ3i1JyiWdLvVhpeyIlIpuNA"/>
+<!-- Overlay to tint the map towards the brand dark colors -->
+<div class="absolute inset-0 bg-background/60"></div>
+</div>
+<!-- Central User Pin & Radar Animation -->
+<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 flex items-center justify-center pointer-events-none" id="radar-container">
+<!-- Radar Waves -->
+<div class="absolute w-24 h-24 bg-primary-container/20 rounded-full radar-pulse border border-primary-container/30"></div>
+<div class="absolute w-24 h-24 bg-primary-container/20 rounded-full radar-pulse border border-primary-container/30" style="animation-delay: 0.6s;"></div>
+<!-- User Pin -->
+<div class="relative w-6 h-6 bg-secondary-container rounded-full border-2 border-primary glowing-border flex items-center justify-center">
+<div class="w-2 h-2 bg-on-secondary-container rounded-full"></div>
+</div>
+<!-- Searching Text -->
+<div class="absolute top-12 whitespace-nowrap text-center">
+<p class="font-title-md text-title-md text-primary animate-pulse">Finding Nearby Ustaads...</p>
+<p class="font-body-md-urdu text-body-md-urdu text-on-surface-variant">قریبی استاد تلاش کیے جا رہے ہیں</p>
+</div>
+</div>
+<!-- Found Technicians Pins (Initially Hidden, simulated via JS) -->
+<div class="absolute inset-0 z-10 opacity-0 transition-opacity duration-1000 hidden" id="tech-pins">
+<!-- Pin 1 -->
+<div class="absolute top-[35%] left-[30%] transform -translate-x-1/2 -translate-y-1/2">
+<div class="relative group cursor-pointer" onclick="selectTech(0)"><div class="w-12 h-12 rounded-full border-2 border-primary-container shadow-[0_0_15px_rgba(0,240,255,0.6)] overflow-hidden bg-surface-container-high ring-2 ring-primary/20"><img alt="Technician Profile" class="w-full h-full object-cover grayscale-0 hover:grayscale transition-all duration-300" data-alt="A small circular avatar portrait of a South Asian male technician in his late 30s, looking professional and confident. The lighting is dramatic and moody, reflecting a high-end dark mode interface aesthetic with cool tones and sharp contrast. The background is a dark, abstract tech environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCia3clqa-DaRXA203TuLQ8iJiMGiyTUffYISd9GtNbrVt5FEfU6Il--PQF8SwjQlfLO63v1NgEZYvU1sQP6lC5kHYuG6aouduEvhYlV03P6RYT3yQ5ryLdARQgEGyFdAY-LFMnaE-CmDjpb3HGnl6rW3oWwBK3aTtS02gzY22NzN4APJaBmjJJEuySGs5dNyPIXs1zQjRObHRz1c1hpHFsjVCGLqLebzOiU4eDr3bh-H5esMP5ofluY1zp_CP1zRiFJle9dye0Sw"/></div></div>
+</div>
+<!-- Pin 2 -->
+<div class="absolute top-[60%] left-[70%] transform -translate-x-1/2 -translate-y-1/2">
+<div class="relative group cursor-pointer" onclick="selectTech(1)"><div class="w-10 h-10 rounded-full border-2 border-primary-container/60 shadow-[0_0_12px_rgba(0,240,255,0.4)] flex items-center justify-center bg-surface-container-high/80 backdrop-blur-sm opacity-80 scale-90"><span class="material-symbols-outlined text-primary text-2xl">person</span></div></div>
+</div>
+</div>
+<!-- Bottom Slider Overlay (Initially Hidden, sliding up) -->
+<div class="absolute bottom-0 left-0 w-full z-40 transform translate-y-full transition-transform duration-500 ease-out pb-6" id="bottom-slider">
+<div class="w-full overflow-x-auto hide-scrollbar snap-x snap-mandatory px-gutter py-4">
+<div class="flex gap-gutter w-max">
+<!-- Tech Card 1 -->
+<div class="snap-center w-[85vw] max-w-sm bg-surface-container-high/90 backdrop-blur-md rounded-xl p-6 glowing-border flex flex-col gap-4">
+<div class="flex items-start gap-4">
+<div class="w-16 h-16 rounded-full overflow-hidden border border-outline-variant/30 flex-shrink-0">
+<img alt="Mohammad Ali" class="w-full h-full object-cover" data-alt="A clear, high-quality portrait of a South Asian male technician, conveying expertise and trust. He is warmly lit against a deep cobalt navy background, fitting perfectly into a premium dark mode application design. The image is crisp, modern, and professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfoPNN1iwxlYn2HWbFlSvwPHN19h4J4hTHc_zVBuc8ZV9yT5-gVs2mwhaMwTPeY1dM9Cvny4OW1TCp8EBvevbIjD8hJiw2WZoA2zP1tu3dflSYbFGza-VEhf_dA0QKjjaSMYGkzqeJMJAmMhUVKdXgH4vm9iqP8h24kRktLymNYVZCQeJOrrLj1B1g_T29g3GLwzJj4CSQCmUmYyI-fSZJlsq0ZuVB34fUPQHoFXT6dcP33Wt0HKM_nt1UZ-3Y1kkXzFDExEmF6Q"/>
+</div>
+<div class="flex-1">
+<h3 class="font-title-md text-title-md text-on-surface font-semibold">Mohammad Ali</h3>
+<div class="flex items-center gap-1 mt-1 text-tertiary-container">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">4.9 (120 Jobs)</span>
+</div>
+<div class="flex items-center gap-2 mt-2">
+<span class="px-2 py-0.5 rounded-full bg-secondary-container/20 text-secondary border border-secondary-container/30 font-label-sm text-label-sm">
+                                        Trust Score: 1640
+                                    </span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant border-t border-outline-variant/20 pt-3">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">near_me</span>
+<span class="font-body-md text-sm">2.4 km away</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">timer</span>
+<span class="font-body-md text-sm">Est. 12 mins</span>
+</div>
+</div>
+<button class="w-full mt-2 py-3 bg-primary-container text-on-primary-container font-title-md text-title-md font-bold rounded-lg hover:bg-primary-fixed-dim transition-colors flex flex-col items-center justify-center shadow-[0_0_15px_rgba(0,240,255,0.2)]">
+<span>Select Ustaad</span>
+<span class="font-body-md-urdu text-sm mt-0.5">منتخب کریں</span>
+</button>
+</div>
+<!-- Tech Card 2 (Dummy for slider effect) -->
+<div class="snap-center w-[85vw] max-w-sm bg-surface-container-high/50 backdrop-blur-md rounded-xl p-6 border border-outline-variant/20 flex flex-col gap-4 opacity-70">
+<div class="flex items-start gap-4">
+<div class="w-16 h-16 rounded-full overflow-hidden bg-surface-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-on-surface-variant text-3xl">person</span>
+</div>
+<div class="flex-1">
+<h3 class="font-title-md text-title-md text-on-surface font-semibold">Tariq M.</h3>
+<div class="flex items-center gap-1 mt-1 text-tertiary-container">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">4.7 (85 Jobs)</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant border-t border-outline-variant/20 pt-3">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">near_me</span>
+<span class="font-body-md text-sm">3.8 km away</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Suppressed on this transactional/focused screen as per rules, but structurally required if it was a destination. Hiding it to follow "Task-Focused" suppression rule.) -->
+<script>
+        // Simulate search finding technicians after 3 seconds
+        setTimeout(() => {
+            const radarContainer = document.getElementById('radar-container');
+            const techPins = document.getElementById('tech-pins');
+            const bottomSlider = document.getElementById('bottom-slider');
+
+            // Hide Radar
+            radarContainer.classList.add('opacity-0');
+            radarContainer.classList.add('transition-opacity', 'duration-500');
+            setTimeout(() => radarContainer.style.display = 'none', 500);
+
+            // Show Pins
+            techPins.classList.remove('hidden');
+            // small delay to allow display block to apply before opacity transition
+            setTimeout(() => {
+                techPins.classList.remove('opacity-0');
+            }, 50);
+
+            // Slide up bottom cards
+            setTimeout(() => {
+                bottomSlider.classList.remove('translate-y-full');
+            }, 400);
+
+        }, 3000);
+
+        function selectTech(index) {
+            // Simple interaction demo
+            const sliderContainer = document.querySelector('.overflow-x-auto');
+            const cards = document.querySelectorAll('.snap-center');
+            if(cards[index]) {
+                cards[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                
+                // Highlight logic (visual feedback)
+                cards.forEach((c, i) => {
+                    if(i === index) {
+                        c.classList.remove('bg-surface-container-high/50', 'opacity-70', 'border-outline-variant/20');
+                        c.classList.add('bg-surface-container-high/90', 'glowing-border');
+                    } else {
+                        c.classList.add('bg-surface-container-high/50', 'opacity-70', 'border-outline-variant/20');
+                        c.classList.remove('bg-surface-container-high/90', 'glowing-border');
+                    }
+                });
+            }
+        }
+    </script>
+</body></html>

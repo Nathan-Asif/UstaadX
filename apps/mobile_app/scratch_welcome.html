@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>UstaadX - Welcome</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+Arabic:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#151d1e",
+                        "secondary-container": "#0266ff",
+                        "on-tertiary-fixed-variant": "#554500",
+                        "on-tertiary-fixed": "#231b00",
+                        "error-container": "#93000a",
+                        "surface-bright": "#333b3b",
+                        "outline": "#849495",
+                        "on-surface-variant": "#b9cacb",
+                        "surface-container-high": "#232b2c",
+                        "surface-container-highest": "#2e3637",
+                        "on-secondary": "#002b75",
+                        "on-secondary-fixed-variant": "#003fa4",
+                        "tertiary-fixed": "#ffe179",
+                        "inverse-primary": "#006970",
+                        "tertiary": "#fff5de",
+                        "on-background": "#dce4e5",
+                        "on-primary": "#00363a",
+                        "surface-container-lowest": "#080f10",
+                        "secondary-fixed": "#dae1ff",
+                        "on-primary-fixed-variant": "#004f54",
+                        "on-surface": "#dce4e5",
+                        "surface-dim": "#0d1515",
+                        "inverse-on-surface": "#2a3233",
+                        "inverse-surface": "#dce4e5",
+                        "on-error-container": "#ffdad6",
+                        "surface-tint": "#00dbe9",
+                        "outline-variant": "#3b494b",
+                        "primary-fixed-dim": "#00dbe9",
+                        "background": "#0d1515",
+                        "on-secondary-fixed": "#001849",
+                        "surface-variant": "#2e3637",
+                        "surface-container": "#192122",
+                        "tertiary-container": "#fed639",
+                        "on-secondary-container": "#f9f7ff",
+                        "on-tertiary": "#3b2f00",
+                        "surface": "#0d1515",
+                        "on-primary-fixed": "#002022",
+                        "secondary": "#b3c5ff",
+                        "on-tertiary-container": "#715d00",
+                        "on-primary-container": "#006970",
+                        "tertiary-fixed-dim": "#eac324",
+                        "secondary-fixed-dim": "#b3c5ff",
+                        "error": "#ffb4ab",
+                        "primary": "#dbfcff",
+                        "primary-fixed": "#7df4ff",
+                        "primary-container": "#00f0ff",
+                        "on-error": "#690005"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "24px",
+                        "stack-lg": "40px",
+                        "base": "8px",
+                        "container-padding": "24px",
+                        "stack-sm": "12px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "body-md-urdu": ["Noto Sans Arabic"],
+                        "headline-lg-mobile": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "title-md": ["Inter"],
+                        "body-lg-urdu": ["Noto Sans Arabic"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "body-md-urdu": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "title-md": ["20px", { "lineHeight": "28px", "fontWeight": "500" }],
+                        "body-lg-urdu": ["20px", { "lineHeight": "32px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Glassmorphism utility for background textures if needed */
+        .glass-panel {
+            background: linear-gradient(145deg, rgba(35, 43, 44, 0.6) 0%, rgba(21, 29, 30, 0.4) 100%);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(132, 148, 149, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col items-center justify-between p-container-padding antialiased relative overflow-hidden">
+<!-- Ambient Background Glow -->
+<div class="absolute top-[-20%] left-[-10%] w-[60vw] h-[60vw] rounded-full bg-primary-container/5 blur-[120px] pointer-events-none"></div>
+<div class="absolute bottom-[-20%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-secondary-container/10 blur-[100px] pointer-events-none"></div>
+<!-- Main Content Canvas -->
+<main class="w-full max-w-md flex flex-col items-center flex-grow justify-center z-10 gap-stack-lg mt-stack-lg">
+<!-- Logo Header -->
+<header class="flex flex-col items-center gap-stack-sm w-full">
+<div class="w-32 h-32 md:w-40 md:h-40 rounded-3xl overflow-hidden shadow-[0_0_30px_rgba(0,240,255,0.15)] ring-1 ring-white/10 relative group">
+<div class="absolute inset-0 bg-gradient-to-tr from-surface-container-highest/80 to-transparent z-10 pointer-events-none"></div>
+<img alt="UstaadX Brand Logo" class="w-full h-full object-cover relative z-0 transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeDeuQRvcU2tAh_ADQlEEYVN0hu4EZgl3nTbBjoqwXQm1MHIYWjARsqbGu9ImBbasKLs3N-AxXXww-_5ASgB3dCJ00ACgExiJIArwc764jiIwwcZSP4YacQ4yOhvQcJhoBp09K05UmZ6CFeyflRzW0o1lsPxsp6o87B3UN9SjCdiyB_ExZNXJr8nimociPQW657h3nqxIFCWL35gDmwRrLE12hnY1NGZc76sgnZixM3YoGAnAXvvyu3RERacPfpvI5mHjO7u-YMg"/>
+</div>
+<h1 class="font-display-lg text-display-lg text-transparent bg-clip-text bg-gradient-to-r from-on-background to-on-surface-variant mt-stack-sm">
+                UstaadX
+            </h1>
+</header>
+<!-- Authentication Card -->
+<div class="w-full flex flex-col gap-stack-md glass-panel p-gutter rounded-2xl shadow-2xl relative">
+<!-- Glow Accent on Top Edge -->
+<div class="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary-container/50 to-transparent rounded-t-2xl"></div>
+<!-- Sliding Tab Bar (Segmented Control) -->
+<div class="flex flex-col gap-4">
+<!-- Primary User Type Toggle -->
+<div class="flex p-1.5 bg-surface-container-lowest rounded-2xl w-full border border-outline-variant/30 relative overflow-hidden">
+<div class="absolute left-1.5 top-1.5 bottom-1.5 w-[calc(50%-6px)] bg-surface-container-high rounded-xl shadow-sm border border-outline-variant/20"></div>
+<button class="flex-1 py-3 flex flex-col items-center justify-center relative z-10 transition-colors group">
+<span class="font-title-md text-on-surface">I am a Customer</span>
+<span class="font-body-md-urdu text-on-surface-variant text-[14px]">مبائل نمبر سلیکٱ کریں</span>
+</button>
+<button class="flex-1 py-3 flex flex-col items-center justify-center relative z-10 opacity-60 hover:opacity-100 transition-opacity">
+<span class="font-title-md text-on-surface-variant">I am a Technician</span>
+<span class="font-body-md-urdu text-on-surface-variant text-[14px]">میں استاد ہوں</span>
+</button>
+</div>
+<!-- Secondary Auth Method Sub-Toggle -->
+<div class="flex p-1 bg-surface-container-lowest/50 rounded-lg w-full border border-outline-variant/20 relative">
+<div class="absolute left-1 top-1 bottom-1 w-[calc(50%-4px)] bg-surface-container/50 rounded-md transition-transform duration-300"></div>
+<button class="flex-1 py-2 font-label-sm text-label-sm text-on-surface relative z-10">
+            Sign In with Number
+        </button>
+<button class="flex-1 py-2 font-label-sm text-label-sm text-on-surface-variant relative z-10">
+            Sign Up with Email
+        </button>
+</div>
+</div>
+<!-- Input Area -->
+<div class="flex flex-col gap-stack-sm w-full">
+<label class="font-label-sm text-label-sm text-on-surface-variant ml-1" for="phone">Mobile Number</label>
+<div class="relative group">
+<span class="absolute inset-y-0 left-0 flex items-center pl-4 text-on-surface-variant font-body-md text-body-md pointer-events-none">
+                        +92
+                    </span>
+<input class="w-full bg-surface-container-highest border border-outline-variant text-on-surface font-body-md text-body-md rounded-xl py-4 pl-14 pr-4 focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container focus:shadow-[0_0_15px_rgba(0,240,255,0.2)] transition-all duration-300 placeholder-on-surface-variant/50" id="phone" placeholder="XXX XXXXXXX" type="tel"/>
+<div class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none opacity-0 group-focus-within:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-primary-container" data-weight="fill">call</span>
+</div>
+</div>
+</div>
+<!-- Action Button -->
+<button class="w-full bg-primary-container text-on-primary-container font-title-md text-title-md py-4 rounded-xl shadow-[0_0_20px_rgba(0,240,255,0.25)] hover:shadow-[0_0_30px_rgba(0,240,255,0.4)] hover:bg-primary transition-all duration-300 active:scale-[0.98] mt-2 relative overflow-hidden group">
+<span class="relative z-10 flex items-center justify-center gap-2">
+                    Send Code
+                    <span class="material-symbols-outlined text-lg transition-transform group-hover:translate-x-1">arrow_forward</span>
+</span>
+<div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out z-0"></div>
+</button>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full text-center pb-stack-md z-10">
+<p class="font-body-lg-urdu text-body-lg-urdu text-on-surface-variant/80 tracking-wide">
+            ustad-x mein khush amadeed
+        </p>
+</footer>
+</body></html>
